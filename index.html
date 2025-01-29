@@ -10,6 +10,9 @@
     <!-- =====BOX ICONS===== -->
     <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
 
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
     <title>Portfolio - Muslam</title>
 </head>
 
@@ -159,11 +162,11 @@
             <h2 class="section-title">Contact</h2>
 
             <div class="contact__container bd-grid">
-                <form action="" class="contact__form">
-                    <input type="text" placeholder="Name" class="contact__input">
-                    <input type="mail" placeholder="Email" class="contact__input">
-                    <textarea name="" id="" cols="0" rows="10" class="contact__input"></textarea>
-                    <input type="button" value="Submit" class="contact__button button">
+                <form id="contact-form" class="contact__form">
+                    <input type="text" name="user_name" placeholder="Name" class="contact__input" required>
+                    <input type="email" name="user_email" placeholder="Email" class="contact__input" required>
+                    <textarea name="message" cols="0" rows="10" class="contact__input" required></textarea>
+                    <button type="submit" class="contact__button button">Kirim Pesan</button>
                 </form>
             </div>
         </section>
@@ -186,6 +189,7 @@
 
     <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/email.js"></script>
 </body>
 
 </html>

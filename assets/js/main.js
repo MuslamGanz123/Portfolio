@@ -54,4 +54,34 @@ const sr = ScrollReveal({
 sr.reveal('.home__data, .about__img, .skills__subtitle, .skills__text',{}); 
 sr.reveal('.home__img, .about__subtitle, .about__text, .skills__img',{delay: 400}); 
 sr.reveal('.home__social-icon',{ interval: 200}); 
-sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200}); 
+sr.reveal('.skills__data, .work__img, .contact__input',{interval: 200});
+
+(function() {
+    // Initialize EmailJS with your public key
+    emailjs.init("J3IzUcNlwl3_hhc9H");
+})();
+
+window.onload = function() {
+    document.getElementById('contact-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        
+        // Tampilkan loading atau disable button
+        const btn = document.querySelector('.contact__button');
+        btn.textContent = 'Mengirim...';
+        btn.disabled = true;
+
+        // Kirim email menggunakan EmailJS
+        emailjs.sendForm('service_xznfuzc', 'template_5mgjhei', this)
+            .then(function() {
+                alert('Pesan berhasil terkirim!');
+                document.getElementById('contact-form').reset();
+                btn.textContent = 'Kirim Pesan';
+                btn.disabled = false;
+            }, function(error) {
+                alert('Maaf, terjadi kesalahan. Silakan coba lagi.');
+                console.log('Error:', error);
+                btn.textContent = 'Kirim Pesan';
+                btn.disabled = false;
+            });
+    });
+}
